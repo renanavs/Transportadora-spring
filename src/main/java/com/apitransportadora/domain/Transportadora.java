@@ -17,7 +17,7 @@ public class Transportadora implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	@Column(nullable=false)
     private String email;
@@ -83,7 +83,7 @@ public class Transportadora implements Serializable {
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getEmail() {
