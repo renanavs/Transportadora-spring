@@ -21,22 +21,30 @@ public class Transportadora implements Serializable {
 
 	@Column(nullable=false)
     private String email;
+	@Column(nullable=false)
     private String name;
+	@Column(nullable=false)
     private String company;
+	@Column(nullable=false)
     private String phone;
+	@Column(nullable=false)
     private String modal;
+	@Column(nullable=false)
     private String street_adress;
+	@Column(nullable=false)
     private String number_adress;
+	@Column(nullable=false)
     private String neighborhood_adress;
+	@Column(nullable=false)
     private String city_adress;
+	@Column(nullable=false)
     private String uf_adress;
-    
-    
-    public Transportadora(long id, String email, String name, String company, String phone, String modal,
-			String street_adress, String number_adress, String neighborhood_adress, String city_adress,
-			String uf_adress) {
+   
+	public Transportadora() {}
+	
+	public Transportadora(String email, String name, String company, String phone, String modal, String street_adress,
+			String number_adress, String neighborhood_adress, String city_adress, String uf_adress) {
 		super();
-		this.id = id;
 		this.email = email;
 		this.name = name;
 		this.company = company;
@@ -48,7 +56,7 @@ public class Transportadora implements Serializable {
 		this.city_adress = city_adress;
 		this.uf_adress = uf_adress;
 	}
-    
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

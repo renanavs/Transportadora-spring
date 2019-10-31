@@ -1,29 +1,32 @@
 package com.apitransportadora.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apitransportadora.domain.Transportadora;
+import com.apitransportadora.services.TransportadoraService;
 
 @RestController
 @RequestMapping(value="/transportadora")
 public class TransportadoraResource {
+	
+	@Autowired
+	private TransportadoraService service;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Transportadora> list() {
+	public ResponseEntity<?> list() {
 		
-		Transportadora transp1 = new Transportadora(1, "null", "null", "null", "null", "null", "null", "null", "null", "null", "null");
-		Transportadora transp2 = new Transportadora(2, "null", "null", "null", "null", "null", "null", "null", "null", "null", "null");
+		return ResponseEntity.ok().body(service.getAll());
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> info(@PathVariable Integer id) {
+		Transportadora target = service.find(id);
 		
-		List<Transportadora> list = new ArrayList<Transportadora>();
-		
-		list.add(transp1);
-		list.add(transp2);
-		
-		return list;
+		return ResponseEntity.ok().body(target);
 	}
 }
