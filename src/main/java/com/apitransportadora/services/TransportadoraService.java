@@ -45,9 +45,8 @@ public class TransportadoraService {
 	}
 	
 	public void delete(Integer id) throws ObjectNotFoundException {
-		Transportadora target = find(id);
 		
-		this.repo.delete(target);
+		this.repo.deleteById(id);
 	}
 	
 }

@@ -55,11 +55,12 @@ public class TransportadoraResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE)
-	public ResponseEntity<Void> destroy() {
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> destroy(@PathVariable Integer id) throws ObjectNotFoundException {
+				
+		service.delete(id);
 		
-		
-		return null;	
+		return ResponseEntity.noContent().build();	
 	}
 	
 }
