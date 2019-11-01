@@ -80,10 +80,10 @@ public class Transportadora implements Serializable {
 	}
 
 	//GETTERS AND SETTERS
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getEmail() {

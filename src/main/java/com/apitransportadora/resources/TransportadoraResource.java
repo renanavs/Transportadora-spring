@@ -14,6 +14,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.apitransportadora.domain.Transportadora;
 import com.apitransportadora.services.TransportadoraService;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 @RestController
 @RequestMapping(value="/transportadora")
 public class TransportadoraResource {
@@ -28,7 +30,7 @@ public class TransportadoraResource {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> info(@PathVariable Integer id) {
+	public ResponseEntity<?> info(@PathVariable Integer id) throws ObjectNotFoundException {
 		Transportadora target = service.find(id);
 		
 		return ResponseEntity.ok().body(target);
@@ -44,13 +46,20 @@ public class TransportadoraResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE)
-	public ResponseEntity<Void> destroy() {
-		return ResponseEntity.ok().body(null);		
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Transportadora request, @PathVariable Integer id) throws ObjectNotFoundException {
+		
+		request.setId(id);
+		service.edit(request);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT)
-	public ResponseEntity<Void> update() {
-		return ResponseEntity.ok().body(null);
+	@RequestMapping(method=RequestMethod.DELETE)
+	public ResponseEntity<Void> destroy() {
+		
+		
+		return null;	
 	}
+	
 }
