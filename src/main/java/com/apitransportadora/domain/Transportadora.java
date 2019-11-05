@@ -2,11 +2,15 @@ package com.apitransportadora.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Transportadora implements Serializable {
@@ -14,47 +18,63 @@ public class Transportadora implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	//Mensagens retornadas para as validações
+	final String NOT_EMPTY_MSG = "Campo Obrigatório";
+	//
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable=false)
+	@Email
+	@NotEmpty(message = NOT_EMPTY_MSG)
     private String email;
-	@Column(nullable=false)
+
+	@NotEmpty(message = NOT_EMPTY_MSG)
     private String name;
-	@Column(nullable=false)
+	
+	@NotEmpty(message = NOT_EMPTY_MSG)
     private String company;
-	@Column(nullable=false)
+	
+	@NumberFormat
+	@NotEmpty(message = NOT_EMPTY_MSG)
     private String phone;
-	@Column(nullable=false)
+	
+	@NotEmpty(message = NOT_EMPTY_MSG)
     private String modal;
-	@Column(nullable=false)
-    private String street_adress;
-	@Column(nullable=false)
-    private String number_adress;
-	@Column(nullable=false)
-    private String neighborhood_adress;
-	@Column(nullable=false)
-    private String city_adress;
-	@Column(nullable=false)
-    private String uf_adress;
+	
+	@NotEmpty(message = NOT_EMPTY_MSG)
+    private String street_address;
+	
+	@NumberFormat
+	@NotEmpty(message = NOT_EMPTY_MSG)
+    private String number_address;
+	
+	@NotEmpty(message = NOT_EMPTY_MSG)
+    private String neighborhood_address;
+	
+	@NotEmpty(message = NOT_EMPTY_MSG)
+    private String city_address;
+	
+	@Length(max = 2)
+	@NotEmpty(message = NOT_EMPTY_MSG)
+    private String uf_address;
    
 	public Transportadora() {}
 	
-	public Transportadora(String email, String name, String company, String phone, String modal, String street_adress,
-			String number_adress, String neighborhood_adress, String city_adress, String uf_adress) {
+	public Transportadora(String email, String name, String company, String phone, String modal, String street_address,
+			String number_address, String neighborhood_address, String city_address, String uf_address) {
 		super();
 		this.email = email;
 		this.name = name;
 		this.company = company;
 		this.phone = phone;
 		this.modal = modal;
-		this.street_adress = street_adress;
-		this.number_adress = number_adress;
-		this.neighborhood_adress = neighborhood_adress;
-		this.city_adress = city_adress;
-		this.uf_adress = uf_adress;
+		this.street_address = street_address;
+		this.number_address = number_address;
+		this.neighborhood_address = neighborhood_address;
+		this.city_address = city_address;
+		this.uf_address = uf_address;
 	}
 
 	@Override
@@ -116,35 +136,35 @@ public class Transportadora implements Serializable {
 	public void setModal(String modal) {
 		this.modal = modal;
 	}
-	public String getStreet_adress() {
-		return street_adress;
+	public String getStreet_address() {
+		return street_address;
 	}
-	public void setStreet_adress(String street_adress) {
-		this.street_adress = street_adress;
+	public void setStreet_address(String street_address) {
+		this.street_address = street_address;
 	}
-	public String getNumber_adress() {
-		return number_adress;
+	public String getNumber_address() {
+		return number_address;
 	}
-	public void setNumber_adress(String number_adress) {
-		this.number_adress = number_adress;
+	public void setNumber_address(String number_address) {
+		this.number_address = number_address;
 	}
-	public String getNeighborhood_adress() {
-		return neighborhood_adress;
+	public String getNeighborhood_address() {
+		return neighborhood_address;
 	}
-	public void setNeighborhood_adress(String neighborhood_adress) {
-		this.neighborhood_adress = neighborhood_adress;
+	public void setNeighborhood_address(String neighborhood_address) {
+		this.neighborhood_address = neighborhood_address;
 	}
-	public String getCity_adress() {
-		return city_adress;
+	public String getCity_address() {
+		return city_address;
 	}
-	public void setCity_adress(String city_adress) {
-		this.city_adress = city_adress;
+	public void setCity_address(String city_address) {
+		this.city_address = city_address;
 	}
-	public String getUf_adress() {
-		return uf_adress;
+	public String getUf_address() {
+		return uf_address;
 	}
-	public void setUf_adress(String uf_adress) {
-		this.uf_adress = uf_adress;
+	public void setUf_address(String uf_address) {
+		this.uf_address = uf_address;
 	}
 
 }

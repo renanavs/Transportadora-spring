@@ -1,4 +1,4 @@
-package com.apitransportadora.resources;
+package com.apitransportadora.controllers;
 
 import java.net.URI;
 
@@ -18,7 +18,7 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
 @RequestMapping(value="/transportadora")
-public class TransportadoraResource {
+public class TransportadoraController {
 	
 	@Autowired
 	private TransportadoraService service;
