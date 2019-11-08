@@ -33,7 +33,6 @@ public class TransportadoraService {
 	}
 	
 	public Transportadora insert(Transportadora request) {
-		//request.setId(null); //Garante que não há id então o método save irá de fato inserir um novo registro
 		
 		return this.repo.save(request);
 	}

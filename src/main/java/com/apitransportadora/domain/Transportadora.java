@@ -33,6 +33,7 @@ public class Transportadora implements Serializable {
 	@NotEmpty(message = NOT_EMPTY_MSG)
     private String name;
 	
+	@Length(min = 4)
 	@NotEmpty(message = NOT_EMPTY_MSG)
     private String company;
 	
@@ -42,6 +43,10 @@ public class Transportadora implements Serializable {
 	
 	@NotEmpty(message = NOT_EMPTY_MSG)
     private String modal;
+	
+	@Length(min = 8, max = 8)
+	@NotEmpty(message = NOT_EMPTY_MSG)
+	private String cep;
 	
 	@NotEmpty(message = NOT_EMPTY_MSG)
     private String street_address;
@@ -63,7 +68,7 @@ public class Transportadora implements Serializable {
 	public Transportadora() {}
 	
 	public Transportadora(String email, String name, String company, String phone, String modal, String street_address,
-			String number_address, String neighborhood_address, String city_address, String uf_address) {
+			String number_address, String neighborhood_address, String city_address, String uf_address, String cep) {
 		super();
 		this.email = email;
 		this.name = name;
@@ -75,6 +80,7 @@ public class Transportadora implements Serializable {
 		this.neighborhood_address = neighborhood_address;
 		this.city_address = city_address;
 		this.uf_address = uf_address;
+		this.cep = cep;
 	}
 
 	@Override
@@ -165,6 +171,12 @@ public class Transportadora implements Serializable {
 	}
 	public void setUf_address(String uf_address) {
 		this.uf_address = uf_address;
+	}
+	public String getCep() {
+		return this.cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 }
